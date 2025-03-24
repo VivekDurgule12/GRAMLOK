@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home'; // Corrected import path
-import Contact from '../src/pages/Contact'
-import About from '../src/pages/About'
+import Contact from './pages/Contact'
+import About from './pages/About'
 
 function App() {
   return (

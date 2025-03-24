@@ -24,6 +24,13 @@ export default defineConfig({
         'hero-pattern': "url('/src/assets/logo.png')", // Replace with your actual image path
       },
     },
+    base: "/",
+  build: {
+    outDir: "dist",
+  },
+  server: {
+    historyApiFallback: true,
+  },
   },
   plugins: [react() ,tailwindcss()],
 })
