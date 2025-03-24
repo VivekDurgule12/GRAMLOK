@@ -41,7 +41,7 @@ const Contact = () => {
   return (
     <div className="flex flex-col min-h-screen bg-light">
       <Header />
-      <main className="flex-grow container mx-auto px-4 py-16 m-20">
+      <main className="flex-grow container mx-auto px-4 py-16 m-20 md:m-20">
       <motion.h1
           className="text-5xl font-extrabold text-center mb-10 text-primary font-poppins max-w-5xl mx-auto"
           initial={{ opacity: 0, y: -50 }}
