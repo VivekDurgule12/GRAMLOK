@@ -10,7 +10,7 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        primary: '#FFA500',      // Mango Flesh
+        primary: '#FF6C12',      // Mango Flesh
         secondary: '#FFDA61',    // Mango Skin (Yellowish)
         accent: '#A4D49D',       // Mango Skin (Greenish)
         dark: '#333333',         // Text Color (Dark)
@@ -34,3 +34,4 @@ export default defineConfig({
   },
   plugins: [react() ,tailwindcss()],
 })
+
