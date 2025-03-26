@@ -188,7 +188,7 @@ const Home = () => {
                         className="w-64 h-64 object-cover rounded-lg mb-4"
                       />
                       <h3 className="text-2xl font-semibold mt-2 text-gray-800">
-                        {product.name}
+                        {/* {product.name} */}
                       </h3>
                       <p className="text-lg text-gray-600 mt-2">
                         {product.description}

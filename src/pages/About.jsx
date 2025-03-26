@@ -128,15 +128,15 @@ const About = () => {
                 title: 'Mangoes',
                 description: 'We offer a variety of premium, handpicked mangoes known for their exquisite flavor and aroma.',
                 items: ['Alphonso', 'Keshar', 'Dusheri', 'Langda'],
-                image: '/mango-placeholder.jpg'
+                image: 'images/mango/hapush.png'
               }, {
                 title: 'Guava',
                 description: 'Our farm-fresh guavas are packed with vitamins and antioxidants, offering a delightful taste and numerous health benefits.',
-                image: '/guava-placeholder.jpg'
+                image: 'images/guava/sardar guava.png'
               }, {
-                title: 'Chikoo (Sapota)',
+                title: 'Chikoo',
                 description: 'Enjoy the naturally sweet and energy-boosting Chikoo, a fruit with a uniquely smooth texture and rich flavor.',
-                image: '/chikoo-placeholder.jpg'
+                image: 'images/otherFruits/chiku.png'
               }
             ].map((product, index) => (
               <motion.div
@@ -151,11 +151,11 @@ const About = () => {
                 <div className="relative group"> {/* Added relative for overlay */}
                     <img src={product.image} alt={product.title} className="w-full h-64 object-cover rounded-md mb-4" />  {/* Increased image height */}
                     {/* Overlay Effect */}
-                    <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                       <p className="text-white text-lg font-semibold">Learn More</p>
+                    <div className="absolute inset-0 bg-[#0003] bg-opacity-20 flex items-center justify-center rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                       <p className="text-white text-2xl font-bold">{product.title}</p>
                     </div>
                 </div>
-                <h3 className="text-2xl font-semibold text-primary mb-3 font-poppins">{product.title}</h3> {/* Increased font size */}
+                {/* <h3 className="text-2xl font-semibold text-primary mb-3 font-poppins">{product.title}</h3> Increased font size */}
                 <p className="text-gray-700 mb-4">{product.description}</p>  {/* Changed text color */}
                 {product.items && (
                   <ul className="list-disc list-inside mt-2 text-gray-700">  {/* Changed text color */}
