@@ -661,7 +661,7 @@ const Home = () => {
 
       {/* Cart Modal */}
       {showCart && (
-        <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-screen bg-[#000000ac] z-50 flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
