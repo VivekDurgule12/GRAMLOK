@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const heroImages = ['./images/banner/banner1.png', './images/banner/banner2.png', './images/banner/banner3.png' ,'./images/banner/banner4.png' ];
+  const heroImages = ['../images/banner/banner1.png', '../images/banner/banner2.png', '../images/banner/banner3.png' ,'../images/banner/banner4.png' ];
 
   useEffect(() => {
     const interval = setInterval(() => {
