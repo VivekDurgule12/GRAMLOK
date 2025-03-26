@@ -64,7 +64,7 @@ const Header = () => {
                   as="a"
                   href={item.href}
                   className={classNames(
-                    item.current ? 'bg-primary text-white' : 'text-gray-700 hover:bg-gray-100 hover:text-primary',
+                    item.current ? 'bg-primary text-black' : 'text-gray-700 hover:bg-gray-100 hover:text-primary',
                     'block px-4 py-2 rounded-md text-lg font-medium transition duration-300'
                   )}
                 >

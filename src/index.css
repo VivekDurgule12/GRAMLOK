@@ -7,17 +7,3 @@ body {
   color: #333333;          /* Dark Gray text */
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif; /* Poppins for headings */
-  color: #FFA500;          /* Mango Orange for headings */
-}
-
-a {
-  color: #FFA500; /* Mango Orange for links */
-  transition: color 0.2s ease-in-out;
-}
-
-a:hover {
-  color: #ffbb3d; /* Light Green on hover */
-  
-}

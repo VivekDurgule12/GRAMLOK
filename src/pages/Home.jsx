@@ -483,24 +483,29 @@
 
 
 
+
+
+
+
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 import {
   FaAward,
   FaPhoneAlt,
   FaShippingFast,
-  FaUsers,
   FaShoppingCart,
   FaTrash,
+  FaUsers,
 } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
 import banner1 from "../images/banner/banner1.png";
 import banner2 from "../images/banner/banner2.png";
 import banner3 from "../images/banner/banner3.png";
 import banner4 from "../images/banner/banner4.png";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -778,12 +783,41 @@ const Home = () => {
             transition={{ duration: 1 }}
             className="relative z-10 container mx-auto px-4"
           >
-            <h1 className="text-6xl font-extrabold mb-6 ">
-            THE SWEETEST TEST OF NATURE
-            </h1>
-            <p className="text-2xl mb-8">
-              Delivering farm-fresh organic fruits directly to your doorstep.
-            </p>
+
+
+<div className="flex items-center justify-center h-[400px] sm:h-[500px] bg-[url('/your-image.jpg')] bg-cover bg-center text-center relative px-4">
+      <div className="relative max-w-4xl p-8">
+        {/* Soft, rounded, faded blur effect */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 0.3, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-[50%] blur-3xl w-full h-full"
+        ></motion.div>
+
+        {/* Heading with gradient effect and fade-in animation */}
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-[#ff6c12] to-green-500 text-transparent bg-clip-text drop-shadow-lg"
+        >
+          THE SWEETEST TEST OF NATURE
+        </motion.h1>
+
+        {/* Subtext with fade-in effect */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
+          className="relative text-lg sm:text-xl md:text-2xl text-white opacity-90"
+        >
+          Delivering farm-fresh organic fruits directly to your doorstep.
+        </motion.p>
+      </div>
+    </div>
+
+
             <div className="flex justify-center items-center space-x-4">
               <a
                 href="tel:+918317284314"
@@ -817,7 +851,9 @@ const Home = () => {
         {/* Product Listing Section */}
         <section className="py-16 bg-light">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-10">Our Premium Selection</h2>
+            <h2   className="text-4xl font-bold mb-10">
+              Our Premium Selection
+            </h2>
             {Object.keys(categorizedProducts).map((category) => (
               <div key={category} className="mb-12">
                 <h3 className="text-3xl font-semibold mb-6 border-b-4 border-primary pb-2 inline-block">
@@ -876,6 +912,57 @@ const Home = () => {
           </div>
         </section>
 
+            <section>
+            <div className="flex justify-center items-center py-16 px-6 from-[#ff6c12] to-green-500 text-transparent bg-clip-text drop-shadow-lg">
+      <div className="max-w-5xl w-full bg-white shadow-lg rounded-2xl p-10 border border-gray-200">
+        
+        {/* Heading */}
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-6">
+          Our Delivery Options
+        </h2>
+
+        <p className="text-lg text-gray-700 text-center mb-8">
+          At <span className="font-semibold text-[#ff6c12]">Gramlok Fruits and Exports</span>, we ensure farm-fresh fruit deliveries with care and efficiency. Whether local or international, our shipping options are tailored to meet your needs.
+        </p>
+
+        {/* Delivery Options Grid */}
+        <div className="grid md:grid-cols-2 gap-6">
+          
+          {/* Domestic Delivery */}
+          <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-3">Domestic Delivery (India)</h3>
+            <ul className="text-gray-700 space-y-2">
+              <li><strong>Standard Shipping:</strong> 3-5 business days</li>
+              <li><strong>Express Shipping:</strong> 1-2 business days (for select locations)</li>
+              <li><strong>Bulk Orders:</strong> Custom delivery arrangements available</li>
+            </ul>
+          </div>
+
+          {/* International Shipping */}
+          <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
+            <h3 className="text-2xl font-semibold text-gray-800 mb-3">International Shipping</h3>
+            <ul className="text-gray-700 space-y-2">
+              <li><strong>Air Freight:</strong> Fast delivery for premium quality assurance</li>
+              <li><strong>Sea Freight:</strong> Cost-effective option for bulk shipments</li>
+              <li><strong>Custom Packaging:</strong> Ensuring freshness throughout transit</li>
+            </ul>
+          </div>
+
+        </div>
+
+        
+
+        {/* Contact Section */}
+        <div className="text-center mt-8">
+          <p className="text-lg font-semibold text-gray-800">
+            For custom shipping solutions or bulk inquiries, <span className="text-[#ff6c12]"><Link to="/contact" className="text-[#ff6c12] hover:underline">
+              contact us today
+            </Link>.</span>
+          </p>
+        </div>
+      </div>
+    </div>
+            </section>
         {/* Services Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">

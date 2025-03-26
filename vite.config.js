@@ -10,11 +10,11 @@ export default defineConfig({
   theme: {
     extend: {
       colors: {
-        primary: '#FF6C12',      // Mango Flesh
-        secondary: '#FFDA61',    // Mango Skin (Yellowish)
-        accent: '#A4D49D',       // Mango Skin (Greenish)
-        dark: '#333333',         // Text Color (Dark)
-        light: 'rgb(237, 220, 165)', // Background Color (Light)
+        // primary: '#FF6C12',      // Mango Flesh
+        // secondary: '#FFDA61',    // Mango Skin (Yellowish)
+        // accent: '#A4D49D',       // Mango Skin (Greenish)
+        // dark: '#333333',         // Text Color (Dark)
+        // light: 'rgb(237, 220, 165)', // Background Color (Light)
       },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
