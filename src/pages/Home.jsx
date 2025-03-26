@@ -778,7 +778,7 @@ const Home = () => {
             transition={{ duration: 1 }}
             className="relative z-10 container mx-auto px-4"
           >
-            <h1 className="text-6xl font-extrabold mb-6">
+            <h1 className="text-6xl font-extrabold mb-6 ">
             THE SWEETEST TEST OF NATURE
             </h1>
             <p className="text-2xl mb-8">

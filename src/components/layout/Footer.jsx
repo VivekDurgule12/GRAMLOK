@@ -5,8 +5,10 @@ import {
   FaLinkedin,
   FaMapMarkerAlt,
   FaPhone,
+  FaFacebook
 } from "react-icons/fa";
 import logo from "../../assets/logo.png";
+
 
 const Footer = () => {
   return (
@@ -112,6 +114,15 @@ const Footer = () => {
               >
                 <FaLinkedin size={24} />
               </a>
+
+              <a
+  href="https://www.facebook.com/people/Gramlok-fruits-and-exports"
+  className="text-black hover:text-secondary transition duration-300"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <FaFacebook size={24} />
+</a>
             </div>
           </div>
         </div>
