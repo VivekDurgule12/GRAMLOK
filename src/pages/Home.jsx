@@ -473,12 +473,12 @@ const Home = () => {
     );
     setCart(updatedCart);
     const productName = cart.find((item) => item.id === productId)?.name;
-    toast.info(
-      `Quantity for ${productName} updated to ${parsedQuantity} dozen(s).`,
-      {
-        position: "top-center",
-      }
-    );
+    // toast.info(
+    //   `Quantity for ${productName} updated to ${parsedQuantity} dozen(s).`,
+    //   {
+    //     position: "top-center",
+    //   }
+    // );
   };
 
   const generateWhatsAppMessage = () => {
