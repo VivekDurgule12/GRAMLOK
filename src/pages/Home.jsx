@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
-  const heroImages = ['src/images/banner/banner1.png', 'src/images/banner/banner2.jpg', 'src/images/banner/banner3.jpg'];
+  const heroImages = ['./images/banner/banner1.png', './images/banner/banner2.png', './images/banner/banner3.png' ,'./images/banner/banner4.png' ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -33,7 +33,7 @@ const Home = () => {
     ],
     'Guava Varieties': [
       { id: 'sardar-guava', name: 'Sardar Guava', image: '/sardar-guava.jpg', description: 'Large, sweet, and aromatic.' },
-      { id: 'pink-taiwan-guava', name: 'Pink Taiwan Guava', image: '/pink-taiwan-guava.jpg', description: 'Rich in flavor and nutrition.' },
+      { id: 'pink-taiwan-guava', name: 'Pink Taiwan Guava', image: '../', description: 'Rich in flavor and nutrition.' },
     ],
     'Other Fruits': [
       { id: 'chikoo', name: 'Chikoo', image: '/chikoo.jpg', description: 'Soft, sweet, and nutrient-rich.' },
