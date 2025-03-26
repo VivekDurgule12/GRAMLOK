@@ -277,14 +277,12 @@
 
 
 
-
-
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import {
   FaAward,
   FaPhoneAlt,
-  FaShippingFast, // Corrected
+  FaShippingFast,
   FaUsers,
   FaShoppingCart,
   FaTrash,
@@ -315,18 +313,20 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    // Load cart from local storage on component mount
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       try {
         setCart(JSON.parse(storedCart));
       } catch (error) {
         console.error("Error parsing cart from localStorage:", error);
-        localStorage.removeItem("cart");
+        localStorage.removeItem("cart"); // Remove corrupted data
       }
     }
   }, []);
 
   useEffect(() => {
+    // Save cart to local storage whenever it changes
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -411,44 +411,42 @@ const Home = () => {
     ],
   };
 
-  const handleQuantityChange = (productId, quantity) => {
-    const parsedQuantity = parseInt(quantity, 10);
-    if (isNaN(parsedQuantity) || parsedQuantity < 0) {
-      setProductQuantities({
-        ...productQuantities,
-        [productId]: 0,
-      });
-      toast.error("Please enter a valid quantity (non-negative number).", {
-        position: "top-center",
-      });
-      return;
-    }
-    setProductQuantities({ ...productQuantities, [productId]: parsedQuantity });
-  };
-
   const addToCart = (product) => {
-    const quantity = productQuantities[product.id] || 1;
-    if (quantity <= 0) {
-      toast.error("Please enter a valid quantity to add to cart.", {
-        position: "top-center",
-      });
-      return;
+    let quantityToAdd = productQuantities[product.id] || "1"; // Get quantity as string
+    quantityToAdd = quantityToAdd.trim(); // Remove leading/trailing spaces
+
+    if (quantityToAdd === "" || isNaN(parseInt(quantityToAdd)) || parseInt(quantityToAdd) <= 0) {
+        toast.error("Please enter a valid quantity (greater than 0) to add to cart.", {
+            position: "top-center",
+        });
+        return;
     }
+
+    quantityToAdd = parseInt(quantityToAdd);  //Convert to number if its valid
+
     const existingItemIndex = cart.findIndex((item) => item.id === product.id);
+
     if (existingItemIndex > -1) {
+      // Item already exists in the cart, update the quantity
       const newCart = [...cart];
-      newCart[existingItemIndex].quantity += quantity;
+      newCart[existingItemIndex].quantity += quantityToAdd;
       setCart(newCart);
-      toast.success(`${quantity} dozen(s) of ${product.name} added to cart!`, {
+      toast.success(`${quantityToAdd} dozen(s) of ${product.name} added to cart!`, {
         position: "top-center",
       });
     } else {
-      setCart([...cart, { ...product, quantity: quantity }]);
-      toast.success(`${quantity} dozen(s) of ${product.name} added to cart!`, {
+      // Item doesn't exist in cart, add it
+      setCart([...cart, { ...product, quantity: quantityToAdd }]);
+      toast.success(`${quantityToAdd} dozen(s) of ${product.name} added to cart!`, {
         position: "top-center",
       });
     }
-    setProductQuantities({ ...productQuantities, [product.id]: 0 });
+
+    // Reset the quantity input for this product to empty string
+    setProductQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [product.id]: "", // Reset to empty string
+    }));
   };
 
   const removeFromCart = (productId) => {
@@ -461,20 +459,26 @@ const Home = () => {
 
   const updateQuantity = (productId, newQuantity) => {
     const parsedQuantity = parseInt(newQuantity, 10);
-    if (isNaN(parsedQuantity) || parsedQuantity < 0) {
+
+    // if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
+    if ( parsedQuantity <= 0) {
       toast.error("Please enter a valid quantity (non-negative number).", {
         position: "top-center",
       });
       return;
     }
+
     const updatedCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity: parsedQuantity } : item
     );
     setCart(updatedCart);
     const productName = cart.find((item) => item.id === productId)?.name;
-    toast.info(`Quantity for ${productName} updated to ${parsedQuantity} dozen(s).`, {
-      position: "top-center",
-    });
+    toast.info(
+      `Quantity for ${productName} updated to ${parsedQuantity} dozen(s).`,
+      {
+        position: "top-center",
+      }
+    );
   };
 
   const generateWhatsAppMessage = () => {
@@ -516,8 +520,10 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
+      <ToastContainer />  {/* Ensure ToastContainer is placed appropriately */}
       <main className="flex-grow">
         <section className="relative bg-black text-center text-white py-40 overflow-hidden">
+          {/* Hero Section (Banner) */}
           <div className="absolute inset-0 z-0">
             <motion.img
               key={currentImage}
@@ -571,6 +577,7 @@ const Home = () => {
           </motion.div>
         </section>
 
+        {/* Product Listing Section */}
         <section className="py-16 bg-light">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-4xl font-bold mb-10">Our Premium Selection</h2>
@@ -592,18 +599,38 @@ const Home = () => {
                         className="w-64 h-64 object-cover rounded-lg mb-4"
                       />
                       <h3 className="text-2xl font-semibold mt-2 text-gray-800">
-                        {product.name}
+                        {/* {product.name} */}
                       </h3>
                       <p className="text-lg text-gray-600 mt-2">
                         {product.description}
                       </p>
-                      
+
+                      {/* Quantity Input
+                      <div className="flex items-center justify-center mt-4">
+                        <label htmlFor={`quantity-${product.id}`} className="mr-2">
+                          Quantity (Dozen):
+                        </label>
+                        <input
+                          type="number"
+                          id={`quantity-${product.id}`}
+                          min="0"
+                          className="w-20 p-2 border rounded text-center"
+                          value={productQuantities[product.id] || ""}  //Set Default value is empty
+                          onChange={(e) => {
+                            setProductQuantities({
+                              ...productQuantities,
+                              [product.id]: e.target.value,
+                            });
+                          }}
+                        />
+                      </div> */}
+
                       <button
-                          className="mt-auto bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600"
-                          onClick={() => addToCart(product)}
-                        >
-                          Add to Cart
-                        </button>
+                        className="mt-4 bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600"
+                        onClick={() => addToCart(product)}
+                      >
+                        Add to Cart
+                      </button>
                     </motion.div>
                   ))}
                 </div>
@@ -612,9 +639,27 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="py-16 b"></section>
+        {/* Services Section */}
+        <section className="py-16 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-4xl font-bold mb-10">Why Choose Us?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="p-6 bg-gray-100 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="mb-4">{service.icon}</div>
+                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
+                  <p className="text-gray-700">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
+      {/* Cart Modal */}
       {showCart && (
         <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50 flex justify-center items-center">
           <motion.div
@@ -647,7 +692,9 @@ const Home = () => {
                           min="0"
                           className="w-20 p-2 border rounded text-center"
                           value={item.quantity}
-                          onChange={(e) => updateQuantity(item.id, e.target.value)}
+                          onChange={(e) =>
+                            updateQuantity(item.id, e.target.value)
+                          }
                         />
                         <span> Dozen(s)</span>
                       </div>
@@ -690,7 +737,9 @@ const Home = () => {
               <button
                 onClick={generateWhatsAppMessage}
                 className="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600 disabled:bg-gray-400"
-                disabled={cart.length === 0 || !customerName || !customerAddress}
+                disabled={
+                  cart.length === 0 || !customerName || !customerAddress
+                }
               >
                 Place Order on WhatsApp
               </button>
@@ -698,8 +747,6 @@ const Home = () => {
           </motion.div>
         </div>
       )}
-
-      <ToastContainer />
       <Footer />
     </div>
   );

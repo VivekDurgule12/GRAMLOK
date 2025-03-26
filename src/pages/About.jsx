@@ -57,14 +57,14 @@ const About = () => {
   </h2>
 
   <p className="text-lg leading-relaxed text-gray-700">
-    GRAMLOK Fruits and Exports is a **trusted name** in premium fruit farming, trading, and exports. 
-    Established in **2018** by **Ganesh Hariram Pawar**, our company is committed to delivering the **finest quality, naturally grown fruits** to markets in **India and across the globe**. 
-    We **blend traditional farming expertise with modern technology** to ensure exceptional freshness, taste, and nutritional value.
+    GRAMLOK Fruits and Exports is a trusted name in premium fruit farming, trading, and exports. 
+    Established in 2018 by Ganesh Hariram Pawar, our company is committed to delivering the finest quality, naturally grown fruits to markets in India and across the globe. 
+    We blend traditional farming expertise with modern technology to ensure exceptional freshness, taste, and nutritional value.
   </p>
 
   <p className="text-lg leading-relaxed text-gray-700 mt-4">
-    Our journey began with a **vision to promote sustainable agriculture** and support local farmers by providing them with a **global platform** to showcase their produce. 
-    Over the years, we have built a **strong supply chain**, ensuring that our fruits maintain their **authenticity, rich flavor, and premium quality** from farm to consumer. 
+    Our journey began with a vision to promote sustainable agriculture and support local farmers by providing them with a global platform to showcase their produce. 
+    Over the years, we have built a strong supply chain, ensuring that our fruits maintain their authenticity, rich flavor, and premium quality from farm to consumer. 
   </p>
 
   <h3 className="text-2xl font-semibold text-dark mt-6 font-poppins">Why Choose Us?</h3>
@@ -77,8 +77,8 @@ const About = () => {
   </ul>
 
   <p className="text-lg leading-relaxed text-gray-700 mt-6">
-    At **GRAMLOK Fruits and Exports**, we are dedicated to bringing you **nature’s best harvest**—fresh, nutritious, and ethically sourced. 
-    Whether you are a distributor, retailer, or an individual seeking **premium farm-fresh produce**, we are here to serve your needs with **uncompromising quality**.
+    At GRAMLOK Fruits and Exports, we are dedicated to bringing you nature’s best harvest—fresh, nutritious, and ethically sourced. 
+    Whether you are a distributor, retailer, or an individual seeking premium farm-fresh produce, we are here to serve your needs with uncompromising quality.
   </p>
 </motion.section>
 
