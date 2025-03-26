@@ -46,19 +46,19 @@ const Home = () => {
 
   const categorizedProducts = {
     'Mango Varieties': [
-      { id: 'alphonso', name: 'Hapus (Alphonso)', image: 'src/images/mango/hapush.png', description: 'Sourced from Konkan, original and natural.' },
-      { id: 'kesar', name: 'Kesar', image: 'src/images/mango/kesar mango.png', description: 'Vibrant orange pulp, sweet and tangy.' },
-      { id: 'dussehri', name: 'Dussehri', image: 'src/images/mango/dasheri mango.png', description: 'Juicy, smooth, and fiberless.' },
-      { id: 'langda', name: 'Langda', image: 'src/images/mango/langra mango.png', description: 'Rich aroma and sweet taste.' },
-      { id: 'lalbagh', name: 'Lalbagh', image: 'src/images/mango/lalbag mango.png', description: 'Popular for its unique flavor.' },
-      { id: 'badam-benisha', name: 'Badam Benisha', image: 'src/images/mango/badam banisha mango.png', description: 'Sweet and nutty taste.' },
+      { id: 'alphonso', name: 'Hapus (Alphonso)', image: '../images/mango/hapush.png', description: 'Sourced from Konkan, original and natural.' },
+      { id: 'kesar', name: 'Kesar', image: '../images/mango/kesar mango.png', description: 'Vibrant orange pulp, sweet and tangy.' },
+      { id: 'dussehri', name: 'Dussehri', image: '../images/mango/dasheri mango.png', description: 'Juicy, smooth, and fiberless.' },
+      { id: 'langda', name: 'Langda', image: '../images/mango/langra mango.png', description: 'Rich aroma and sweet taste.' },
+      { id: 'lalbagh', name: 'Lalbagh', image: '../images/mango/lalbag mango.png', description: 'Popular for its unique flavor.' },
+      { id: 'badam-benisha', name: 'Badam Benisha', image: '../images/mango/badam banisha mango.png', description: 'Sweet and nutty taste.' },
     ],
     'Guava Varieties': [
-      { id: 'sardar-guava', name: 'Sardar Guava', image: 'src/images/guava/sardar guava.png', description: 'Large, sweet, and aromatic.' },
-      { id: 'pink-taiwan-guava', name: 'Pink Taiwan Guava', image: 'src/images/guava/pink taiwan guava.png', description: 'Rich in flavor and nutrition.' },
+      { id: 'sardar-guava', name: 'Sardar Guava', image: '../images/guava/sardar guava.png', description: 'Large, sweet, and aromatic.' },
+      { id: 'pink-taiwan-guava', name: 'Pink Taiwan Guava', image: '../images/guava/pink taiwan guava.png', description: 'Rich in flavor and nutrition.' },
     ],
     'Other Fruits': [
-      { id: 'chikoo', name: 'Chikoo', image: 'src/images/otherFruits/chiku.png', description: 'Soft, sweet, and nutrient-rich.' },
+      { id: 'chikoo', name: 'Chikoo', image: '../images/otherFruits/chiku.png', description: 'Soft, sweet, and nutrient-rich.' },
     ]
   };
   
