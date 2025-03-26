@@ -88,31 +88,31 @@ const Home = () => {
       },
       {
         id: "kesar",
-        name: "Kesar",
+        name: "Keshar",
         image: "/images/mango/kesar mango.png",
         description: "Vibrant orange pulp, sweet and tangy.",
       },
       {
         id: "dussehri",
-        name: "Dussehri",
+        name: "Dasheri",
         image: "/images/mango/dasheri mango.png",
         description: "Juicy, smooth, and fiberless.",
       },
       {
-        id: "langda",
+        id: "Langra",
         name: "Langda",
         image: "/images/mango/langra mango.png",
         description: "Rich aroma and sweet taste.",
       },
       {
         id: "lalbagh",
-        name: "Lalbagh",
+        name: "Lalbag",
         image: "/images/mango/lalbag mango.png",
         description: "Popular for its unique flavor.",
       },
       {
         id: "badam-benisha",
-        name: "Badam Benisha",
+        name: "Badam Benishan ",
         image: "/images/mango/badam banisha mango.png",
         description: "Sweet and nutty taste.",
       },
@@ -134,7 +134,7 @@ const Home = () => {
     "Other Fruits": [
       {
         id: "chikoo",
-        name: "Chikoo",
+        name: "Chikoo (Sapodilla)",
         image: "/images/otherFruits/chiku.png",
         description: "Soft, sweet, and nutrient-rich.",
       },
@@ -302,7 +302,7 @@ const Home = () => {
           >
 
 
-<div className="flex items-center justify-center h-[400px] sm:h-[500px] bg-[url('/your-image.jpg')] bg-cover bg-center text-center relative px-4">
+<div className="flex items-center justify-center h-[400px] sm:h-[500px] bg-cover bg-center text-center relative px-4">
       <div className="relative max-w-4xl p-8">
         
         {/* Smooth, faded, rounded blur effect */}
@@ -310,7 +310,7 @@ const Home = () => {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 0.4, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 mx-auto w-[90%] h-[70%] rounded-[40%] bg-white/20 blur-[120px] opacity-60"
+          className="absolute inset-0 mx-auto w-[95%] h-[80%] rounded-[45%] bg-white/30 blur-[150px] opacity-60"
         ></motion.div>
 
         {/* Heading with gradient effect */}
@@ -390,7 +390,7 @@ const Home = () => {
                         className="w-64 h-64 object-cover rounded-lg mb-4"
                       />
                       <h3 className="text-2xl font-semibold mt-2 text-gray-800">
-                        {/* {product.name} */}
+                        {product.name}
                       </h3>
                       <p className="text-lg text-gray-600 mt-2">
                         {product.description}
