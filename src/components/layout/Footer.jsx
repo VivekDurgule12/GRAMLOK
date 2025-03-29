@@ -118,7 +118,7 @@ const Footer = () => {
               </a>
 
               <a
-                href="https://www.facebook.com/people/Gramlok-fruits-and-exports"
+                href="https://www.facebook.com/profile.php?id=61573057093253"
                 className="text-black hover:text-green-400 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
