@@ -4,9 +4,13 @@ import { useEffect, useState } from "react";
 import Home from './pages/Home'; // Corrected import path
 import Contact from './pages/Contact'
 import About from './pages/About'
+import { HelmetProvider } from "react-helmet-async";
+import SEO from './components/layout/SEO';
 
 function App() {
   return (
+    <HelmetProvider>
+<SEO/>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
@@ -15,6 +19,7 @@ function App() {
      
       </Routes>
     </Router>
+    </HelmetProvider>
   );
 }
 
