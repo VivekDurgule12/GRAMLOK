@@ -366,7 +366,7 @@ const Home = () => {
           </motion.div>
         </section>
 
-        {/* Product Listing Section */}
+        {/* Product Listing Section .....*/}
         <section className="py-16 bg-light">
           <div className="container mx-auto px-4 text-center">
             <h2   className="text-4xl font-bold mb-10">
