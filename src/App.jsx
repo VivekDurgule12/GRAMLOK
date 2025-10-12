@@ -6,6 +6,7 @@ import Contact from './pages/Contact'
 import About from './pages/About'
 import { HelmetProvider } from "react-helmet-async";
 import SEO from './components/layout/SEO';
+import Enquiry from './components/layout/Enquiry';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      <Route path='/enquiry' element={<Enquiry/>}/>
      
       </Routes>
     </Router>

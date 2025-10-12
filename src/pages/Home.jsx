@@ -1,9 +1,4 @@
 
-
-
-
-
-
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
@@ -19,10 +14,13 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Footer from "../components/layout/Footer";
 import Header from "../components/layout/Header";
+import About from "../components/AboutHome";
 import banner1 from "../images/banner/banner1.png";
 import banner2 from "../images/banner/banner2.png";
 import banner3 from "../images/banner/banner3.png";
 import banner4 from "../images/banner/banner4.png";
+import { div } from "framer-motion/client";
+import Enquiry from "../components/layout/Enquiry";
 
 const Home = () => {
   const [currentImage, setCurrentImage] = useState(0);
@@ -81,63 +79,71 @@ const Home = () => {
   const categorizedProducts = {
     "Mango Varieties": [
       {
-        id: "alphonso",
-        name: "Hapus (Alphonso)",
-        image: "/images/mango/hapush.png",
+        id: "ratnagiri-hapus",
+        name: "Ratnagiri - Hapus",
+        image: "/images/ratnagirihapus.png",
         description: "Sourced from Konkan, original and natural.",
       },
       {
-        id: "kesar",
-        name: "Keshar",
-        image: "/images/mango/kesar mango.png",
-        description: "Vibrant orange pulp, sweet and tangy.",
+        id: "devgad-mango",
+        name: "Devgad - Mango",
+        image: "/images/devgadmango.png",
+        description: "Sourced from Konkan, original and natural.",
       },
       {
-        id: "dussehri",
-        name: "Dasheri",
-        image: "/images/mango/dasheri mango.png",
-        description: "Juicy, smooth, and fiberless.",
+        id: "kesharmango",
+        name: "keshar - Mango",
+        image: "/images/kesharmango.webp",
+        description: "Sourced from Konkan, original and natural.",
       },
-      {
-        id: "Langra",
-        name: "Langda",
-        image: "/images/mango/langra mango.png",
-        description: "Rich aroma and sweet taste.",
-      },
-      {
-        id: "lalbagh",
-        name: "Lalbag",
-        image: "/images/mango/lalbag mango.png",
-        description: "Popular for its unique flavor.",
-      },
-      {
-        id: "badam-benisha",
-        name: "Badam Benishan ",
-        image: "/images/mango/badam banisha mango.png",
-        description: "Sweet and nutty taste.",
-      },
+
     ],
-    "Guava Varieties": [
+    "Guava -Chikoo Varieties": [
       {
-        id: "sardar-guava",
-        name: "Sardar Guava",
-        image: "/images/guava/sardar guava.png",
+        id: "pinktaiwanperu",
+        name: "Pink - taiwan - peru",
+        image: "/images/pinktaiwanperu.png",
         description: "Large, sweet, and aromatic.",
       },
       {
-        id: "pink-taiwan-guava",
-        name: "Pink Taiwan Guava",
-        image: "/images/guava/pink taiwan guava.png",
-        description: "Rich in flavor and nutrition.",
+        id: "sardar-guava",
+        name: "Sardar Guava",
+        image: "/images/sardarperu.webp",
+        description: "Large, sweet, and aromatic.",
       },
-    ],
-    "Other Fruits": [
       {
         id: "chikoo",
-        name: "Chikoo (Sapodilla)",
-        image: "/images/otherFruits/chiku.png",
+        name: "Chikoo",
+        image: "/images/chikoo.jpg",
+        description: "Large, sweet, and aromatic.",
+      }
+      
+    ],
+    "Other Products": [
+      {
+        id: "frozen strewbery",
+        name: "Frozen Strewbery",
+        image: "/images/frozenstrewbery.png",
         description: "Soft, sweet, and nutrient-rich.",
       },
+      {
+        id: "kaju",
+        name: "Kaju",
+        image: "/images/kaju.png",
+        description: "Soft, sweet, and nutrient-rich.",
+      },
+      {
+        id: "kanda",
+        name: "Kanda",
+        image: "/images/kanda.png",
+        description: "Soft, nutrient-rich.",
+      },
+       {
+        id: "Amras",
+        name: "Amras",
+        image: "/images/20250903_163624.jpg",
+        description: "BESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+      }
     ],
   };
 
@@ -279,6 +285,7 @@ const Home = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
+      
       <ToastContainer /> {/* Ensure ToastContainer is placed appropriately */}
       <main className="flex-grow">
         <section className="relative bg-black text-center text-white py-40 overflow-hidden">
@@ -366,121 +373,72 @@ const Home = () => {
           </motion.div>
         </section>
 
+        {/* product section  */}
+
         {/* Product Listing Section .....*/}
-        <section className="py-16 bg-light">
-          <div className="container mx-auto px-4 text-center">
-            <h2   className="text-4xl font-bold mb-10">
-              Our Premium Selection
-            </h2>
-            {Object.keys(categorizedProducts).map((category) => (
-              <div key={category} className="mb-12">
-                <h3 className="text-3xl font-semibold mb-6 border-b-4 border-primary pb-2 inline-block">
-                  {category}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
-                  {(categorizedProducts[category] || []).map((product) => (
-                    <motion.div
-                      key={product.id}
-                      whileHover={{ scale: 1.05 }}
-                      className="bg-white p-6 rounded-lg shadow-lg text-center flex flex-col items-center transition-transform transform hover:shadow-xl"
-                    >
-                      <img
-                        src={product.image}
-                        alt={product.name}
-                        className="w-64 h-64 object-cover rounded-lg mb-4"
-                      />
-                      <h3 className="text-2xl font-semibold mt-2 text-gray-800">
-                        {product.name}
-                      </h3>
-                      <p className="text-lg text-gray-600 mt-2">
-                        {product.description}
-                      </p>
+<div id="products"> 
+  <section className="py-6 bg-light">
+    <div className="container mx-auto px-2 text-center">
+      <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+        Our Premium Selection
+      </h2>
 
-                      {/* Quantity Input
-                      <div className="flex items-center justify-center mt-4">
-                        <label htmlFor={`quantity-${product.id}`} className="mr-2">
-                          Quantity (Dozen):
-                        </label>
-                        <input
-                          type="number"
-                          id={`quantity-${product.id}`}
-                          min="0"
-                          className="w-20 p-2 border rounded text-center"
-                          value={productQuantities[product.id] || ""}  //Set Default value is empty
-                          onChange={(e) => {
-                            setProductQuantities({
-                              ...productQuantities,
-                              [product.id]: e.target.value,
-                            });
-                          }}
-                        />
-                      </div> */}
+      {Object.keys(categorizedProducts).map((category) => (
+        <div key={category} className="mb-8">
+          <h3 className="text-xl sm:text-2xl font-semibold mb-3 border-b-2 border-primary pb-1 inline-block">
+            {category}
+          </h3>
 
-                      <button
-                        className="mt-4 bg-black text-white py-2 px-4 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600"
-                        onClick={() => addToCart(product)}
-                      >
-                        Add to Cart
-                      </button>
-                    </motion.div>
-                  ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
+            {(categorizedProducts[category] || []).map((product, index, arr) => (
+              <motion.div
+                key={product.id}
+                whileHover={{ scale: 1.01 }}
+                className={`rounded-lg shadow-sm flex items-center gap-4 p-3 transition-transform transform hover:shadow-md bg-transparent h-55 w-120
+                  ${
+                    // center last card if it's alone
+                    arr.length % 3 === 1 && index === arr.length - 1
+                      ? "lg:col-span-3 lg:justify-self-center"
+                      : ""
+                  }`}
+              >
+                {/* Left: Product Image */}
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-28 h-35 sm:w-32 sm:h-32 object-cover rounded-lg"
+                />
+
+                {/* Right: Info */}
+                <div className="flex flex-col items-start text-left">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                    {product.name}
+                  </h3>
+                  <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                    {product.description}
+                  </p>
+                  <button
+                    className="mt-2 bg-black text-white py-1 px-3 rounded-md hover:bg-gray-800 text-sm"
+                    onClick={() => addToCart(product)}
+                  >
+                    Add to Cart
+                  </button>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </section>
-
-            <section>
-            <div className="flex justify-center items-center py-16 px-6 from-[#ff6c12] to-green-500 text-transparent bg-clip-text drop-shadow-lg">
-      <div className="max-w-5xl w-full bg-white shadow-lg rounded-2xl p-10 border border-gray-200">
-        
-        {/* Heading */}
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-6">
-          Our Delivery Options
-        </h2>
-
-        <p className="text-lg text-gray-700 text-center mb-8">
-          At <span className="font-semibold text-[#ff6c12]">Gramlok Fruits and Exports</span>, we ensure farm-fresh fruit deliveries with care and efficiency. Whether local or international, our shipping options are tailored to meet your needs.
-        </p>
-
-        {/* Delivery Options Grid */}
-        <div className="grid md:grid-cols-2 gap-6">
-          
-          {/* Domestic Delivery */}
-          <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">Domestic Delivery (India)</h3>
-            <ul className="text-gray-700 space-y-2">
-              <li><strong>Standard Shipping:</strong> 3-5 business days</li>
-              <li><strong>Express Shipping:</strong> 1-2 business days (for select locations)</li>
-              <li><strong>Bulk Orders:</strong> Custom delivery arrangements available</li>
-            </ul>
-          </div>
-
-          {/* International Shipping */}
-          <div className="bg-gray-50 p-6 rounded-xl shadow-sm">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-3">International Shipping</h3>
-            <ul className="text-gray-700 space-y-2">
-              <li><strong>Air Freight:</strong> Fast delivery for premium quality assurance</li>
-              <li><strong>Sea Freight:</strong> Cost-effective option for bulk shipments</li>
-              <li><strong>Custom Packaging:</strong> Ensuring freshness throughout transit</li>
-            </ul>
-          </div>
-
         </div>
-
-        
-
-        {/* Contact Section */}
-        <div className="text-center mt-8">
-          <p className="text-lg font-semibold text-gray-800">
-            For custom shipping solutions or bulk inquiries, <span className="text-[#ff6c12]"><Link to="/contact" className="text-[#ff6c12] hover:underline">
-              contact us today
-            </Link>.</span>
-          </p>
-        </div>
-      </div>
+      ))}
     </div>
-            </section>
+  </section>
+</div>
+
+
+
+
+        <About/>
+
+        <Enquiry/>
         {/* Services Section */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 text-center">
@@ -515,7 +473,8 @@ const Home = () => {
             {cart.length === 0 ? (
               <p>Your cart is empty.</p>
             ) : (
-              <ul>
+              <div className="h-60 overflow-hidden">
+                <ul className="h-full overflow-y-auto pr-2">
                 {cart.map((item) => (
                   <li
                     key={item.id}
@@ -550,6 +509,8 @@ const Home = () => {
                   </li>
                 ))}
               </ul>
+              </div>
+              
             )}
             <div className="mt-6">
               <h3 className="text-xl font-semibold mb-2">Customer Details</h3>

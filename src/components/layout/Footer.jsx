@@ -5,15 +5,13 @@ import {
   FaLinkedin,
   FaMapMarkerAlt,
   FaPhone,
-  FaFacebook
+  FaFacebook,
 } from "react-icons/fa";
 import logo from "../../assets/logo.png";
-import { motion } from "framer-motion";
-
 
 const Footer = () => {
   return (
-    <footer className="bg-[#ffffff] -700 py-10 ">
+    <footer className="bg-[#ffffff] py-10">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Logo and Company Name */}
@@ -23,7 +21,7 @@ const Footer = () => {
               alt="Gramlok Fruits and Exports Logo"
               className="h-16 mb-4"
             />
-            <p className="font-bold text-lg font-poppins ">
+            <p className="font-bold text-lg font-poppins">
               GRAMLOK FRUITS & EXPORTS
             </p>
           </div>
@@ -56,8 +54,7 @@ const Footer = () => {
               <p className="text-sm text-black">
                 GRAMLOK FRUITS AND EXPORTS, Phaltan, Maharashtra, India
               </p>
-            </div> 
-             
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -65,11 +62,11 @@ const Footer = () => {
             <h3 className="font-bold text-lg mb-4 font-poppins text-black">
               Quick Links
             </h3>
-            <ul>
+            <ul className="space-y-2">
               <li>
                 <a
                   href="/"
-                  className="text-black hover:text-black transition duration-300"
+                  className="text-black hover:text-green-600 transition duration-300"
                 >
                   Home
                 </a>
@@ -77,24 +74,39 @@ const Footer = () => {
               <li>
                 <a
                   href="/about"
-                  className="text-black hover:text-black transition duration-300"
+                  className="text-black hover:text-green-600 transition duration-300"
                 >
                   About
                 </a>
               </li>
               <li>
                 <a
+                  href="/products"
+                  className="text-black hover:text-green-600 transition duration-300"
+                >
+                  Products
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/enquiry"
+                  className="text-black hover:text-green-600 transition duration-300"
+                >
+                  Enquiry
+                </a>
+              </li>
+              <li>
+                <a
                   href="/contact"
-                  className="text-black hover:text-black transition duration-300"
+                  className="text-black hover:text-green-600 transition duration-300"
                 >
                   Contact
                 </a>
               </li>
-              {/* <li><a href="/products" className="hover:text-green-400 transition duration-300">Products</a></li>  You can uncomment when needed*/}
             </ul>
           </div>
 
-          {/* Social Media and Newsletter */}
+          {/* Social Media */}
           <div>
             <h3 className="font-bold text-lg mb-4 font-poppins text-black">
               Follow Us
@@ -102,28 +114,27 @@ const Footer = () => {
             <div className="flex space-x-4 mb-4">
               <a
                 href="https://www.instagram.com/gramlok_fruits_and_exports/"
-                className="text-white hover:text-green-400 transition duration-300"
+                className="hover:text-green-600 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaInstagram size={24} color="black"/>
+                <FaInstagram size={24} color="black" />
               </a>
               <a
                 href="https://www.linkedin.com/company/gramlok-globle-exim/"
-                className="text-green-700 hover:text-green-400 transition duration-300"
+                className="hover:text-green-600 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaLinkedin size={24} color="black"/>
+                <FaLinkedin size={24} color="black" />
               </a>
-
               <a
                 href="https://www.facebook.com/profile.php?id=61573057093253"
-                className="text-black hover:text-green-400 transition duration-300"
+                className="hover:text-green-600 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <FaFacebook size={24} color="black"/>
+                <FaFacebook size={24} color="black" />
               </a>
             </div>
           </div>
