@@ -7,7 +7,7 @@ import {
   FaPhone,
   FaFacebook,
 } from "react-icons/fa";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/GRAMLOK_logo.png";
 
 const Footer = () => {
   return (
@@ -22,7 +22,7 @@ const Footer = () => {
               className="h-16 mb-4"
             />
             <p className="font-bold text-lg font-poppins">
-              GRAMLOK FRUITS & EXPORTS
+              GRAMLOK Naturals & EXPORTS
             </p>
           </div>
 
@@ -52,7 +52,13 @@ const Footer = () => {
             <div className="flex items-start mb-2">
               <FaMapMarkerAlt className="text-black mr-2 text-lg mt-1" />
               <p className="text-sm text-black">
-                GRAMLOK FRUITS AND EXPORTS, Phaltan, Maharashtra, India
+                GRAMLOK NATURALS AND EXPORTS, Phaltan, Maharashtra, India
+              </p>
+            </div>
+             <div className="flex items-start mb-2">
+              <FaMapMarkerAlt className="text-black mr-2 text-lg mt-1" />
+              <p className="text-sm text-black">
+                GRAMLOK NATURALS, Ap. Mith mumbari, devgad. District sindhudurg, Maharashtra, India
               </p>
             </div>
           </div>
@@ -79,22 +85,7 @@ const Footer = () => {
                   About
                 </a>
               </li>
-              <li>
-                <a
-                  href="/products"
-                  className="text-black hover:text-green-600 transition duration-300"
-                >
-                  Products
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/enquiry"
-                  className="text-black hover:text-green-600 transition duration-300"
-                >
-                  Enquiry
-                </a>
-              </li>
+             
               <li>
                 <a
                   href="/contact"
@@ -141,7 +132,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center mt-8 text-sm border-t border-gray-600 pt-4 text-black">
-          © {new Date().getFullYear()} GRAMLOK FRUITS AND EXPORTS. All rights
+          © {new Date().getFullYear()} GRAMLOK NATURALS AND EXPORTS. All rights
           reserved.
         </div>
       </div>

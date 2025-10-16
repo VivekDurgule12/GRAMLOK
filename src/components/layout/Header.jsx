@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../../assets/logo.png';
+import logo from '../../assets/GRAMLOK_logo.png';
 import { Disclosure } from '@headlessui/react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';

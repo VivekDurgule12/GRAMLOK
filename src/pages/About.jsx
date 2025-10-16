@@ -1,11 +1,10 @@
 import React from 'react';
 import Header from '../components/layout/Header';
 import Footer from '../components/layout/Footer';
-import { FaCheckCircle, FaMapMarkerAlt, FaLeaf } from 'react-icons/fa'; // Added icons
+import { FaCheckCircle, FaMapMarkerAlt, FaLeaf, FaUsers, FaCode } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const About = () => {
-  // Animation Variants
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
@@ -21,7 +20,7 @@ const About = () => {
     hover: { scale: 1.05, transition: { duration: 0.2 } },
   };
 
-  const productCardVariants = {
+  const cardVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: (i) => ({
       opacity: 1,
@@ -31,11 +30,23 @@ const About = () => {
     hover: { scale: 1.05, boxShadow: "0px 10px 20px rgba(0,0,0,0.2)" },
   };
 
+  // Team members data
+  const leaders = [
+    { name: "Mr. Ganesh Pawar", role: "Founder", img: "/images/ganesh.jpg" },
+    { name: "Mr. Atharv Pawar", role: "Founder & CEO", img: "/images/atharv.png" },
+    { name: "Mr. Anuj Pawar", role: "Co - Founder", img: "/images/anuj.jpg" },
+    { name: "Mr. Om Kale", role: "Partner", img: "/images/omkale.png" },
+  ];
+
+  const developers = [
+    { name: "Vivek Durgule", role: "Developer", img: "/images/sahil.jpg" },
+    { name: "Nikhil Malave", role: "Developer", img: "/images/nikhil.jpg" },
+  ];
 
   return (
     <div className="flex flex-col min-h-screen bg-light">
       <Header />
-      <main className="flex-grow px-6 py-16 mt-20 md:m-20"> {/* Added responsive margin */}
+      <main className="flex-grow px-6 py-16 mt-20 md:m-20">
         <motion.h1
           className="text-5xl font-extrabold text-center mb-10 text-primary font-poppins max-w-5xl mx-auto"
           initial={{ opacity: 0, y: -50 }}
@@ -44,48 +55,71 @@ const About = () => {
           About Us
         </motion.h1>
 
-        {/* Welcome Section */}
+        {/* --- TEAM SECTION --- */}
         <motion.section
-  className="mb-16 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg"
-  variants={sectionVariants}
-  initial="hidden"
-  animate="visible"
->
-  <h2 className="text-3xl font-semibold text-dark mb-4 font-poppins flex items-center">
-    <FaLeaf className="text-green-500 mr-2" />
-    Welcome to GRAMLOK Fruits and Exports
-  </h2>
+          className="mb-16 max-w-6xl mx-auto bg-white p-10 rounded-2xl shadow-lg"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <h2 className="text-3xl font-semibold text-dark mb-10 font-poppins flex items-center justify-center">
+            <FaUsers className="text-blue-500 mr-3" /> Meet Our Core Team
+          </h2>
 
-  <p className="text-lg leading-relaxed text-gray-700">
-    GRAMLOK Fruits and Exports is a trusted name in premium fruit farming, trading, and exports. 
-    Established in 2018 by Ganesh Hariram Pawar, our company is committed to delivering the finest quality, naturally grown fruits to markets in India and across the globe. 
-    We blend traditional farming expertise with modern technology to ensure exceptional freshness, taste, and nutritional value.
-  </p>
+          {/* Leaders in 2-column grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mb-12">
+            {leaders.map((person, index) => (
+              <motion.div
+                key={index}
+                className="bg-light rounded-2xl shadow-md p-8 text-center hover:shadow-lg transition duration-300"
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                custom={index}
+                whileHover="hover"
+              >
+                <img
+                  src={person.img}
+                  alt={person.name}
+                  className="w-48 h-48 object-cover rounded-full mx-auto mb-5 border-4 border-primary"
+                />
+                <h3 className="text-2xl font-semibold text-dark">{person.name}</h3>
+                <p className="text-gray-600 text-lg">{person.role}</p>
+              </motion.div>
+            ))}
+          </div>
 
-  <p className="text-lg leading-relaxed text-gray-700 mt-4">
-    Our journey began with a vision to promote sustainable agriculture and support local farmers by providing them with a global platform to showcase their produce. 
-    Over the years, we have built a strong supply chain, ensuring that our fruits maintain their authenticity, rich flavor, and premium quality from farm to consumer. 
-  </p>
+          {/* Developers Section */}
+          <h3 className="text-2xl font-semibold text-dark mb-8 font-poppins flex items-center justify-center">
+            <FaCode className="text-green-500 mr-2" /> Development Team
+          </h3>
 
-  <h3 className="text-2xl font-semibold text-dark mt-6 font-poppins">Why Choose Us?</h3>
-  <ul className="list-disc list-inside space-y-3 text-lg text-gray-700 mt-3">
-    <li><strong>Premium Quality Assurance:</strong> Every fruit is carefully handpicked, ensuring freshness and superior taste.</li>
-    <li><strong>Sustainable Farming Practices:</strong> We adhere to environmentally friendly methods to promote long-term agricultural health.</li>
-    <li><strong>Global Export Network:</strong> Our efficient logistics ensure timely delivery to markets worldwide.</li>
-    <li><strong>Direct Farmer Partnerships:</strong> We work closely with farmers to maintain quality and ensure fair pricing.</li>
-    <li><strong>Advanced Processing & Packaging:</strong> Our state-of-the-art facilities preserve natural flavor and extend shelf life.</li>
-  </ul>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            {developers.map((dev, index) => (
+              <motion.div
+                key={index}
+                className="bg-light rounded-2xl shadow-sm p-6 text-center hover:shadow-lg transition duration-300"
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                custom={index}
+                whileHover="hover"
+              >
+                <img
+                  src={dev.img}
+                  alt={dev.name}
+                  className="w-28 h-28 object-cover rounded-full mx-auto mb-3 border-2 border-accent"
+                />
+                <h4 className="text-lg font-semibold text-dark">{dev.name}</h4>
+                <p className="text-gray-600">{dev.role}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
 
-  <p className="text-lg leading-relaxed text-gray-700 mt-6">
-    At GRAMLOK Fruits and Exports, we are dedicated to bringing you nature’s best harvest—fresh, nutritious, and ethically sourced. 
-    Whether you are a distributor, retailer, or an individual seeking premium farm-fresh produce, we are here to serve your needs with uncompromising quality.
-  </p>
-</motion.section>
-
-
-        {/* Our Mission Section */}
+        {/* Mission Section */}
         <motion.section
-          className="mb-16 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg" // Added styling
+          className="mb-16 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
@@ -96,92 +130,38 @@ const About = () => {
               'Deliver premium-quality fruits that consistently meet global standards.',
               'Promote sustainable farming practices and empower local farmers.',
               'Ensure freshness, authenticity, and exceptional taste in every fruit we supply.',
-              'Build lasting relationships with our customers and partners based on trust and transparency.' // Added a point
+              'Build lasting relationships with our customers and partners based on trust and transparency.',
             ].map((text, index) => (
               <motion.li
                 key={index}
-                className="flex items-center text-gray-700" // Changed text color
+                className="flex items-center text-gray-700"
                 variants={listItemVariants}
                 initial="hidden"
                 animate="visible"
-                custom={index} // Pass index for delay
+                custom={index}
                 whileHover="hover"
               >
-                <FaCheckCircle className="text-accent mr-3 text-xl" /> {/* Increased icon size */}
+                <FaCheckCircle className="text-accent mr-3 text-xl" />
                 {text}
               </motion.li>
             ))}
           </ul>
         </motion.section>
 
-        {/* Our Products Section */}
+        {/* Location Section */}
         <motion.section
-          className="mb-16 max-w-5xl mx-auto"
-          variants={sectionVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <h2 className="text-3xl font-semibold text-dark mb-6 font-poppins">Our Products</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10"> {/* Increased gap */}
-            {[
-              {
-                title: 'Mangoes',
-                description: 'We offer a variety of premium, handpicked mangoes known for their exquisite flavor and aroma.',
-                items: ['Alphonso', 'Keshar', 'Dusheri', 'Langda'],
-                image: 'images/mango/hapush.png'
-              }, {
-                title: 'Guava',
-                description: 'Our farm-fresh guavas are packed with vitamins and antioxidants, offering a delightful taste and numerous health benefits.',
-                image: 'images/guava/sardar guava.png'
-              }, {
-                title: 'Chikoo',
-                description: 'Enjoy the naturally sweet and energy-boosting Chikoo, a fruit with a uniquely smooth texture and rich flavor.',
-                image: 'images/otherFruits/chiku.png'
-              }
-            ].map((product, index) => (
-              <motion.div
-                key={index}
-                className="bg-white p-6 rounded-2xl shadow-md hover:shadow-lg transition duration-300" // Added rounded-2xl
-                variants={productCardVariants}
-                initial="hidden"
-                animate="visible"
-                custom={index}
-                whileHover="hover"
-              >
-                <div className="relative group"> {/* Added relative for overlay */}
-                    <img src={product.image} alt={product.title} className="w-full h-64 object-cover rounded-md mb-4" />  {/* Increased image height */}
-                    {/* Overlay Effect */}
-                    <div className="absolute inset-0 bg-[#0003] bg-opacity-20 flex items-center justify-center rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                       <p className="text-white text-2xl font-bold">{product.title}</p>
-                    </div>
-                </div>
-                {/* <h3 className="text-2xl font-semibold text-primary mb-3 font-poppins">{product.title}</h3> Increased font size */}
-                <p className="text-gray-700 mb-4">{product.description}</p>  {/* Changed text color */}
-                {product.items && (
-                  <ul className="list-disc list-inside mt-2 text-gray-700">  {/* Changed text color */}
-                    {product.items.map((item, i) => (
-                      <li key={i}>{item}</li>
-                    ))}
-                  </ul>
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </motion.section>
-
-        {/* Location Section (Responsive Map) */}
-        <motion.section
-          className="mb-16 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg" // Added styling
+          className="mb-16 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
         >
           <h2 className="text-3xl font-semibold text-dark mb-6 font-poppins flex items-center">
-            <FaMapMarkerAlt className="text-red-500 mr-2" /> {/* Added Icon */}
+            <FaMapMarkerAlt className="text-red-500 mr-2" />
             Location
           </h2>
-          <p className="text-lg leading-relaxed text-gray-700 mb-4"> {/* Changed text color */}
-            Based in Phaltan, Maharashtra, our strategic location ensures efficient logistics and enables us to provide a smooth and timely distribution of fresh fruits to our valued customers.
+          <p className="text-lg leading-relaxed text-gray-700 mb-4">
+            Based in Phaltan, Maharashtra, our strategic location ensures efficient logistics and enables us
+            to provide a smooth and timely distribution of fresh fruits to our valued customers.
           </p>
           <div className="relative w-full h-96 md:h-[450px] lg:h-[500px] rounded-lg overflow-hidden shadow-md">
             <iframe
@@ -195,9 +175,9 @@ const About = () => {
           </div>
         </motion.section>
 
-        {/* Privacy Policy Section */}
+        {/* Privacy Policy */}
         <motion.section
-          className="mb-12 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg"  // Added styling
+          className="mb-12 max-w-5xl mx-auto bg-white p-8 rounded-2xl shadow-lg"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
@@ -207,24 +187,27 @@ const About = () => {
             {[
               'We collect minimal data necessary to enhance your user experience.',
               'Your personal information will never be shared with third parties without your consent.',
-              'We use cookies and analytics solely for the purpose of website improvements and performance monitoring.'
+              'We use cookies and analytics solely for the purpose of website improvements and performance monitoring.',
             ].map((policy, index) => (
               <motion.li
                 key={index}
-                className="flex items-center text-gray-700"  // Changed text color
+                className="flex items-center text-gray-700"
                 variants={listItemVariants}
                 initial="hidden"
                 animate="visible"
                 custom={index}
                 whileHover="hover"
               >
-                <FaCheckCircle className="text-accent mr-3 text-xl" /> {/* Increased icon size */}
+                <FaCheckCircle className="text-accent mr-3 text-xl" />
                 {policy}
               </motion.li>
             ))}
           </ul>
-          <p className="text-lg mt-4 text-gray-700"> {/* Changed text color */}
-            For any privacy-related concerns or inquiries, please contact us at <a href="mailto:gramlokfruits@gmail.com" className="text-blue-600 hover:text-blue-800">gramlokfruits@gmail.com</a>.
+          <p className="text-lg mt-4 text-gray-700">
+            For any privacy-related concerns or inquiries, please contact us at{" "}
+            <a href="mailto:gramlokfruits@gmail.com" className="text-blue-600 hover:text-blue-800">
+              gramlokfruits@gmail.com
+            </a>.
           </p>
         </motion.section>
       </main>

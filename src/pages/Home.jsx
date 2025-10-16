@@ -141,8 +141,9 @@ const Home = () => {
        {
         id: "Amras",
         name: "Amras",
-        image: "/images/20250903_163624.jpg",
-        description: "BESTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT",
+        image: "/images/20250903_170711.jpg",
+        description: "Pulp MRP 365/. 40% discount price : 220₹",
+        
       }
     ],
   };
@@ -433,8 +434,39 @@ const Home = () => {
   </section>
 </div>
 
+{/* Amras images  */}
 
+      <div>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-4 py-10">
+  {/* Image 1 */}
+  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+    <img
+      src="../../../public/images/20250903_163624.jpg"
+      alt="Image 1"
+      className="w-full h-full object-cover"
+    />
+  </div>
 
+  {/* Image 2 */}
+  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+    <img
+      src="../../../public/images/20250903_170711.jpg"
+      alt="Image 2"
+      className="w-full h-full object-cover"
+    />
+  </div>
+
+  {/* Image 3 */}
+  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
+    <img
+      src="../../../public/images/20250903_170906.jpg"
+      alt="Image 3"
+      className="w-full h-full object-cover"
+    />
+  </div>
+</div>
+
+      </div>
 
         <About/>
 

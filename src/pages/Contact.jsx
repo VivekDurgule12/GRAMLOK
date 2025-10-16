@@ -132,7 +132,7 @@ const Contact = () => {
               <div className="flex items-center">
                 <FaMapMarkerAlt className="text-primary mr-3 text-lg" />
                 <p className="text-dark">
-                  GRAMLOK FRUITS AND EXPORTS, Phaltan, Maharashtra, India
+                  GRAMLOK NATURALS AND EXPORTS, Phaltan, Maharashtra, India
                 </p>
               </div>
               <div className="flex items-center">
