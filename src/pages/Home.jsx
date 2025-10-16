@@ -441,7 +441,7 @@ const Home = () => {
   {/* Image 1 */}
   <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
     <img
-      src="../../public/images/20250903_163624.jpg"
+      src="../../public/images/20250903_170643.jpg"
       alt="Image 1"
       className="w-full h-full object-cover"
     />
