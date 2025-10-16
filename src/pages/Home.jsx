@@ -441,7 +441,7 @@ const Home = () => {
   {/* Image 1 */}
   <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
     <img
-      src="../../../public/images/20250903_163624.jpg"
+      src="../../public/images/20250903_163624.jpg"
       alt="Image 1"
       className="w-full h-full object-cover"
     />
@@ -450,7 +450,7 @@ const Home = () => {
   {/* Image 2 */}
   <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
     <img
-      src="../../../public/images/20250903_170711.jpg"
+      src="../../public/images/20250903_170711.jpg"
       alt="Image 2"
       className="w-full h-full object-cover"
     />
@@ -459,7 +459,7 @@ const Home = () => {
   {/* Image 3 */}
   <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
     <img
-      src="../../../public/images/20250903_170906.jpg"
+      src="../../public/images/20250903_170906.jpg"
       alt="Image 3"
       className="w-full h-full object-cover"
     />
