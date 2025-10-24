@@ -39,7 +39,7 @@ const About = () => {
   ];
 
   const developers = [
-    { name: "Vivek Durgule", role: "Developer", img: "/images/sahil.jpg" },
+    { name: "Vivek Durgule", role: "Developer", img: "/images/vivek.jpg" },
     { name: "Nikhil Malave", role: "Developer", img: "/images/nikhil.jpg" },
   ];
 
