@@ -1,4 +1,3 @@
-
 import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
@@ -41,20 +40,18 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    // Load cart from local storage on component mount
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
       try {
         setCart(JSON.parse(storedCart));
       } catch (error) {
         console.error("Error parsing cart from localStorage:", error);
-        localStorage.removeItem("cart"); // Remove corrupted data
+        localStorage.removeItem("cart");
       }
     }
   }, []);
 
   useEffect(() => {
-    // Save cart to local storage whenever it changes
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -96,7 +93,6 @@ const Home = () => {
         image: "/images/kesharmango.webp",
         description: "Sourced from Konkan, original and natural.",
       },
-
     ],
     "Guava -Chikoo Varieties": [
       {
@@ -116,8 +112,7 @@ const Home = () => {
         name: "Chikoo",
         image: "/images/chikoo.jpg",
         description: "Large, sweet, and aromatic.",
-      }
-      
+      },
     ],
     "Other Products": [
       {
@@ -138,40 +133,34 @@ const Home = () => {
         image: "/images/kanda.png",
         description: "Soft, nutrient-rich.",
       },
-       {
+      {
         id: "Amras",
         name: "Amras",
         image: "/images/20250903_170711.jpg",
-        description: "Pulp MRP 365/. 40% discount price : 220₹",
-        
-      }
+        description: "Pulp MRP 365/. 40% discount price : 220₹",
+      },
     ],
   };
 
   const addToCart = (product) => {
-    let quantityToAdd = productQuantities[product.id] || "1"; // Get quantity as string
-    quantityToAdd = quantityToAdd.trim(); // Remove leading/trailing spaces
+    let quantityToAdd = productQuantities[product.id] || "1";
+    quantityToAdd = quantityToAdd.trim();
 
     if (
       quantityToAdd === "" ||
       isNaN(parseInt(quantityToAdd)) ||
       parseInt(quantityToAdd) <= 0
     ) {
-      toast.error(
-        "Please enter a valid quantity (greater than 0) to add to cart.",
-        {
-          position: "top-center",
-        }
-      );
+      toast.error("Please enter a valid quantity (greater than 0) to add to cart.", {
+        position: "top-center",
+      });
       return;
     }
 
-    quantityToAdd = parseInt(quantityToAdd); //Convert to number if its valid
-
+    quantityToAdd = parseInt(quantityToAdd);
     const existingItemIndex = cart.findIndex((item) => item.id === product.id);
 
     if (existingItemIndex > -1) {
-      // Item already exists in the cart, update the quantity
       const newCart = [...cart];
       newCart[existingItemIndex].quantity += quantityToAdd;
       setCart(newCart);
@@ -179,17 +168,15 @@ const Home = () => {
         position: "top-center",
       });
     } else {
-      // Item doesn't exist in cart, add it
       setCart([...cart, { ...product, quantity: quantityToAdd }]);
       toast.success(`${quantityToAdd} dozen(s) of ${product.name} added to cart!`, {
         position: "top-center",
       });
     }
 
-    // Reset the quantity input for this product to empty string
     setProductQuantities((prevQuantities) => ({
       ...prevQuantities,
-      [product.id]: "", // Reset to empty string
+      [product.id]: "",
     }));
   };
 
@@ -203,45 +190,26 @@ const Home = () => {
 
   const updateQuantity = (productId, newQuantity) => {
     const parsedQuantity = parseInt(newQuantity, 10);
-
-    // if (isNaN(parsedQuantity) || parsedQuantity <= 0) {
     if (parsedQuantity <= 0) {
       toast.error("Please enter a valid quantity (non-negative number).", {
         position: "top-center",
       });
       return;
     }
-
     const updatedCart = cart.map((item) =>
       item.id === productId ? { ...item, quantity: parsedQuantity } : item
     );
     setCart(updatedCart);
-    const productName = cart.find((item) => item.id === productId)?.name;
-    // toast.info(
-    //   `Quantity for ${productName} updated to ${parsedQuantity} dozen(s).`,
-    //   {
-    //     position: "top-center",
-    //   }
-    // );
   };
 
   const generateWhatsAppMessage = () => {
     if (cart.length === 0) {
-      toast.warn("Your cart is empty!", {
-        position: "top-center",
-      });
+      toast.warn("Your cart is empty!", { position: "top-center" });
       return;
     }
 
-    if (
-      !customerName ||
-      !customerAddress ||
-      !customerPincode ||
-      !customerNumber
-    ) {
-      toast.error("Please fill in all customer details.", {
-        position: "top-center",
-      });
+    if (!customerName || !customerAddress || !customerPincode || !customerNumber) {
+      toast.error("Please fill in all customer details.", { position: "top-center" });
       return;
     }
 
@@ -258,15 +226,18 @@ const Home = () => {
       });
       return;
     }
+
     let message = `New Order:\nCustomer Name: ${customerName}\nPhone Number: ${customerNumber}\nAddress: ${customerAddress}\nPincode: ${customerPincode}\n\nItems:\n`;
     cart.forEach((item) => {
       message += `- ${item.name} - ${item.quantity} Dozen(s)\n`;
     });
     message += `\nThank you!`;
+
     const encodedMessage = encodeURIComponent(message);
     const whatsappNumber = "+918317284314";
     const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
     window.open(whatsappURL, "_blank");
+
     setCart([]);
     setCustomerAddress("");
     setCustomerName("");
@@ -284,13 +255,12 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen overflow-x-hidden">
       <Header />
-      
-      <ToastContainer /> {/* Ensure ToastContainer is placed appropriately */}
+      <ToastContainer />
       <main className="flex-grow">
-        <section className="relative bg-black text-center text-white py-40 overflow-hidden">
-          {/* Hero Section (Banner) */}
+        {/* Hero Section */}
+        <section className="relative bg-black text-center text-white py-40 overflow-hidden px-4 sm:px-6">
           <div className="absolute inset-0 z-0">
             <motion.img
               key={currentImage}
@@ -302,68 +272,56 @@ const Home = () => {
               transition={{ duration: 1 }}
             />
           </div>
+
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
             className="relative z-10 container mx-auto px-4"
           >
+            <div className="flex items-center justify-center h-[400px] sm:h-[500px] text-center relative px-4">
+              <div className="relative max-w-4xl p-8 mx-auto">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 0.4, scale: 1 }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                  className="absolute inset-0 mx-auto w-[95%] h-[80%] rounded-[45%] bg-white/30 blur-[150px] opacity-60"
+                ></motion.div>
 
+                <motion.h1
+                  initial={{ opacity: 0, y: -30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease: "easeOut" }}
+                  className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-[#ff6c12] to-green-500 text-transparent bg-clip-text drop-shadow-lg"
+                >
+                  THE SWEETEST TEST OF NATURE
+                </motion.h1>
 
-<div className="flex items-center justify-center h-[400px] sm:h-[500px] bg-cover bg-center text-center relative px-4">
-      <div className="relative max-w-4xl p-8">
-        
-        {/* Smooth, faded, rounded blur effect */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 0.4, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 mx-auto w-[95%] h-[80%] rounded-[45%] bg-white/30 blur-[150px] opacity-60"
-        ></motion.div>
-
-        {/* Heading with gradient effect */}
-        <motion.h1
-          initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="relative text-4xl sm:text-5xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-[#ff6c12] to-green-500 text-transparent bg-clip-text drop-shadow-lg"
-        >
-          THE SWEETEST TEST OF NATURE
-        </motion.h1>
-
-        {/* Subtext with fade-in effect */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
-          className="relative text-lg sm:text-xl md:text-2xl text-white opacity-90"
-        >
-          Delivering farm-fresh organic fruits directly to your doorstep.
-        </motion.p>
-      </div>
-    </div>
-
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3, duration: 1, ease: "easeOut" }}
+                  className="relative text-lg sm:text-xl md:text-2xl text-white opacity-90"
+                >
+                  Delivering farm-fresh organic fruits directly to your doorstep.
+                </motion.p>
+              </div>
+            </div>
 
             <div className="flex justify-center items-center space-x-4">
               <a
                 href="tel:+918317284314"
-                className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white transition-all duration-300 ease-in-out bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
+                className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-orange-500 to-orange-700 hover:from-orange-600 hover:to-orange-800 rounded-full shadow-lg"
               >
-                <span className="absolute inset-0 rounded-full overflow-hidden">
-                  <span className="absolute inset-0 bg-gradient-to-r from-orange-800 via-yellow-400 to-orange-500 opacity-50 blur-xl"></span>
-                </span>
-                <FaPhoneAlt className="mr-2 text-xl transition-transform transform group-hover:rotate-12" />
-                <span className="relative text-white">Call Now</span>
+                <FaPhoneAlt className="mr-2 text-xl" />
+                Call Now
               </a>
               <button
                 onClick={toggleCart}
-                className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white transition-all duration-300 ease-in-out bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 rounded-full shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="relative inline-flex items-center justify-center px-6 py-3 text-lg font-semibold text-white bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 rounded-full shadow-lg"
               >
-                <span className="absolute inset-0 rounded-full overflow-hidden">
-                  <span className="absolute inset-0 bg-gradient-to-r from-green-800 via-yellow-400 to-green-500 opacity-50 blur-xl"></span>
-                </span>
                 <FaShoppingCart className="mr-2 text-xl" />
-                <span className="relative text-white">View Cart</span>
+                View Cart
                 {cart.length > 0 && (
                   <span className="absolute top-0 right-0 transform translate-x-2/4 -translate-y-1/2 bg-red-500 text-white text-xs font-semibold rounded-full px-2 py-1">
                     {cart.length}
@@ -374,106 +332,88 @@ const Home = () => {
           </motion.div>
         </section>
 
-        {/* product section  */}
+        {/* Product Section */}
+        <div id="products">
+          <section className="py-6 bg-light px-4 sm:px-6 text-center">
+            <div className="container mx-auto">
+              <h2 className="text-2xl sm:text-3xl font-bold mb-6">
+                Our Premium Selection
+              </h2>
 
-        {/* Product Listing Section .....*/}
-<div id="products"> 
-  <section className="py-6 bg-light">
-    <div className="container mx-auto px-2 text-center">
-      <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-        Our Premium Selection
-      </h2>
-
-      {Object.keys(categorizedProducts).map((category) => (
-        <div key={category} className="mb-8">
-          <h3 className="text-xl sm:text-2xl font-semibold mb-3 border-b-2 border-primary pb-1 inline-block">
-            {category}
-          </h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
-            {(categorizedProducts[category] || []).map((product, index, arr) => (
-              <motion.div
-                key={product.id}
-                whileHover={{ scale: 1.01 }}
-                className={`rounded-lg shadow-sm flex items-center gap-4 p-3 transition-transform transform hover:shadow-md bg-transparent h-55 w-120
-                  ${
-                    // center last card if it's alone
-                    arr.length % 3 === 1 && index === arr.length - 1
-                      ? "lg:col-span-3 lg:justify-self-center"
-                      : ""
-                  }`}
-              >
-                {/* Left: Product Image */}
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-28 h-35 sm:w-32 sm:h-32 object-cover rounded-lg"
-                />
-
-                {/* Right: Info */}
-                <div className="flex flex-col items-start text-left">
-                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
-                    {product.name}
+              {Object.keys(categorizedProducts).map((category) => (
+                <div key={category} className="mb-8">
+                  <h3 className="text-xl sm:text-2xl font-semibold mb-3 border-b-2 border-primary pb-1 inline-block">
+                    {category}
                   </h3>
-                  <p className="text-sm text-gray-600 mt-1 line-clamp-2">
-                    {product.description}
-                  </p>
-                  <button
-                    className="mt-2 bg-black text-white py-1 px-3 rounded-md hover:bg-gray-800 text-sm"
-                    onClick={() => addToCart(product)}
-                  >
-                    Add to Cart
-                  </button>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 justify-items-center">
+                    {(categorizedProducts[category] || []).map((product) => (
+                      <motion.div
+                        key={product.id}
+                        whileHover={{ scale: 1.05 }}
+                        className="rounded-lg shadow-sm flex flex-col sm:flex-row items-center sm:items-start gap-4 p-4 w-full max-w-[320px] sm:max-w-none text-center sm:text-left hover:shadow-md transition-all"
+                      >
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className="w-28 h-28 sm:w-32 sm:h-32 object-cover rounded-lg"
+                        />
+                        <div className="flex flex-col items-center sm:items-start">
+                          <h3 className="text-base sm:text-lg font-semibold text-gray-800">
+                            {product.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            {product.description}
+                          </p>
+                          <button
+                            className="mt-2 bg-black text-white py-1 px-3 rounded-md hover:bg-gray-800 text-sm"
+                            onClick={() => addToCart(product)}
+                          >
+                            Add to Cart
+                          </button>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+              ))}
+            </div>
+          </section>
+        </div>
+
+        {/* Amras Images */}
+        <div className="px-4 sm:px-6">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 py-10 text-center">
+            <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
+              <img
+                src="../../../public/images/20250903_163624.jpg"
+                alt="Image 1"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
+              <img
+                src="../../../public/images/20250903_170711.jpg"
+                alt="Image 2"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
+              <img
+                src="../../../public/images/20250903_170906.jpg"
+                alt="Image 3"
+                className="w-full h-full object-cover"
+              />
+            </div>
           </div>
         </div>
-      ))}
-    </div>
-  </section>
-</div>
 
-{/* Amras images  */}
+        <About />
+        <Enquiry />
 
-      <div>
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 px-4 py-10">
-  {/* Image 1 */}
-  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-    <img
-      src="../../public/images/20250903_170643.jpg"
-      alt="Image 1"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* Image 2 */}
-  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-    <img
-      src="../../public/images/20250903_170711.jpg"
-      alt="Image 2"
-      className="w-full h-full object-cover"
-    />
-  </div>
-
-  {/* Image 3 */}
-  <div className="w-100 h-100 rounded-xl overflow-hidden shadow-md hover:shadow-lg transition">
-    <img
-      src="../../public/images/20250903_170906.jpg"
-      alt="Image 3"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
-      </div>
-
-        <About/>
-
-        <Enquiry/>
         {/* Services Section */}
-        <section className="py-16 bg-white">
-          <div className="container mx-auto px-4 text-center">
+        <section className="py-16 bg-white px-4 sm:px-6">
+          <div className="container mx-auto text-center">
             <h2 className="text-4xl font-bold mb-10">Why Choose Us?</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {services.map((service, index) => (
@@ -493,13 +433,13 @@ const Home = () => {
 
       {/* Cart Modal */}
       {showCart && (
-        <div className="fixed top-0 left-0 w-full h-screen bg-[#000000ac] z-50 flex justify-center items-center">
+        <div className="fixed top-0 left-0 w-full h-screen bg-[#000000ac] z-50 flex justify-center items-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 50 }}
             transition={{ duration: 0.3 }}
-            className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full"
+            className="bg-white rounded-lg shadow-xl p-8 max-w-md w-full mx-auto"
           >
             <h2 className="text-2xl font-bold mb-4">Your Cart</h2>
             {cart.length === 0 ? (
@@ -507,102 +447,90 @@ const Home = () => {
             ) : (
               <div className="h-60 overflow-hidden">
                 <ul className="h-full overflow-y-auto pr-2">
-                {cart.map((item) => (
-                  <li
-                    key={item.id}
-                    className="flex items-center justify-between py-2 border-b"
-                  >
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded mr-4"
-                    />
-                    <div>
-                      <h3 className="font-semibold">{item.name}</h3>
-                      <div className="flex items-center space-x-2">
+                  {cart.map((item) => (
+                    <li
+                      key={item.id}
+                      className="flex items-center justify-between py-2 border-b"
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.name}
+                        className="w-16 h-16 object-cover rounded mr-4"
+                      />
+                      <div>
+                        <p className="font-semibold">{item.name}</p>
                         <input
                           type="number"
-                          min="0"
-                          className="w-20 p-2 border rounded text-center"
                           value={item.quantity}
+                          min="1"
                           onChange={(e) =>
                             updateQuantity(item.id, e.target.value)
                           }
+                          className="border px-2 py-1 w-16 text-center rounded"
                         />
-                        <span> Dozen(s)</span>
                       </div>
-                    </div>
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="text-red-500 hover:text-red-700 focus:outline-none"
-                    >
-                      <FaTrash />
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                      <button
+                        onClick={() => removeFromCart(item.id)}
+                        className="text-red-500 hover:text-red-700"
+                      >
+                        <FaTrash />
+                      </button>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              
             )}
-            <div className="mt-6">
-              <h3 className="text-xl font-semibold mb-2">Customer Details</h3>
+
+            {/* Customer Info */}
+            <div className="mt-6 space-y-2">
               <input
                 type="text"
-                placeholder="Your Name"
-                className="w-full p-2 border rounded mb-3"
+                placeholder="Full Name"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
-                required
+                className="w-full border px-3 py-2 rounded"
               />
               <input
-                type="number"
-                placeholder="Phone Number"
-                className="w-full p-2 border rounded mb-3"
-                value={customerNumber}
-                onChange={(e) => setCustomerNumber(e.target.value)}
-                required
-              />
-
-              <textarea
-                placeholder="Your Address"
-                className="w-full p-2 border rounded mb-3"
+                type="text"
+                placeholder="Address"
                 value={customerAddress}
                 onChange={(e) => setCustomerAddress(e.target.value)}
-                required
+                className="w-full border px-3 py-2 rounded"
               />
               <input
-                type="number"
+                type="text"
                 placeholder="Pincode"
-                className="w-full p-2 border rounded mb-3"
                 value={customerPincode}
                 onChange={(e) => setCustomerPincode(e.target.value)}
-                required
+                className="w-full border px-3 py-2 rounded"
+              />
+              <input
+                type="text"
+                placeholder="Phone Number"
+                value={customerNumber}
+                onChange={(e) => setCustomerNumber(e.target.value)}
+                className="w-full border px-3 py-2 rounded"
               />
             </div>
-            <div className="flex justify-end mt-6 space-x-4">
+
+            <div className="mt-6 flex justify-between">
               <button
-                onClick={toggleCart}
-                className="px-4 py-2 rounded bg-gray-300 hover:bg-gray-400"
+                onClick={() => setShowCart(false)}
+                className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
               >
                 Close
               </button>
               <button
                 onClick={generateWhatsAppMessage}
-                className="px-4 py-2 rounded bg-green-500 text-white hover:bg-green-600 disabled:bg-gray-400"
-                disabled={
-                  cart.length === 0 ||
-                  !customerName ||
-                  !customerAddress ||
-                  !customerPincode ||
-                  !customerNumber
-                }
+                className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
               >
-                Place Order on WhatsApp
+                Order via WhatsApp
               </button>
             </div>
           </motion.div>
         </div>
       )}
+
       <Footer />
     </div>
   );

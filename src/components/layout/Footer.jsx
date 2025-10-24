@@ -22,7 +22,7 @@ const Footer = () => {
               className="h-16 mb-4"
             />
             <p className="font-bold text-lg font-poppins">
-              GRAMLOK Naturals & EXPORTS
+              GRAMLOK NATURALS
             </p>
           </div>
 
@@ -132,7 +132,7 @@ const Footer = () => {
         </div>
 
         <div className="text-center mt-8 text-sm border-t border-gray-600 pt-4 text-black">
-          © {new Date().getFullYear()} GRAMLOK NATURALS AND EXPORTS. All rights
+          © {new Date().getFullYear()} GRAMLOK NATURALS . All rights
           reserved.
         </div>
       </div>
