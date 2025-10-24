@@ -33,14 +33,14 @@ const About = () => {
   // Team members data
   const leaders = [
     { name: "Mr. Ganesh Pawar", role: "Founder", img: "/images/ganesh.jpg" },
-    { name: "Mr. Atharv Pawar", role: "Founder & CEO", img: "/images/atharv.png" },
-    { name: "Mr. Anuj Pawar", role: "Co - Founder", img: "/images/anuj.jpg" },
-    { name: "Mr. Om Kale", role: "Partner", img: "/images/omkale.png" },
+    { name: "Mr. Atharv Pawar", role: "CO - Founder & CEO", img: "/images/atharv.png" },
+    { name: "Mr. Anuj Pawar", role: "Director - Marketing & Sales", img: "/images/anuj.jpg" },
+    { name: "Mr. Om Kale", role: "Director - Strategy, Content & Creative Development", img: "/images/omkale.png" },
   ];
 
   const developers = [
     { name: "Vivek Durgule", role: "Developer", img: "/images/vivek.jpg" },
-    { name: "Nikhil Malave", role: "Developer", img: "/images/nikhil.jpg" },
+    { name: "Nikhil Malave", role: "Developer", img: "/images/nikhil3.jpg" },
   ];
 
   return (
@@ -63,7 +63,7 @@ const About = () => {
           animate="visible"
         >
           <h2 className="text-3xl font-semibold text-dark mb-10 font-poppins flex items-center justify-center">
-            <FaUsers className="text-blue-500 mr-3" /> Meet Our Core Team
+            <FaUsers className="text-blue-500 mr-3" /> The Minds Behind the Brand 
           </h2>
 
           {/* Leaders in 2-column grid */}
@@ -81,7 +81,7 @@ const About = () => {
                 <img
                   src={person.img}
                   alt={person.name}
-                  className="w-48 h-48 object-cover rounded-full mx-auto mb-5 border-4 border-primary"
+                  className="w-50 h-50 object-cover rounded-full mx-auto mb-5 border-4 border-primary"
                 />
                 <h3 className="text-2xl font-semibold text-dark">{person.name}</h3>
                 <p className="text-gray-600 text-lg">{person.role}</p>
@@ -108,7 +108,7 @@ const About = () => {
                 <img
                   src={dev.img}
                   alt={dev.name}
-                  className="w-28 h-28 object-cover rounded-full mx-auto mb-3 border-2 border-accent"
+                  className="w-28 h-32 object-cover rounded-full mx-auto mb-3 border-2 border-accent"
                 />
                 <h4 className="text-lg font-semibold text-dark">{dev.name}</h4>
                 <p className="text-gray-600">{dev.role}</p>
