@@ -136,7 +136,7 @@ const Home = () => {
       {
         id: "Amras",
         name: "Amras",
-        image: "../../../public/images/amras3.jpg",
+        image: "/images/amras3.jpg",
         description: "Pulp MRP 365/. 40% discount price : 220₹",
       },
     ],
@@ -386,21 +386,21 @@ const Home = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-6 py-10 text-center">
             <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
               <img
-                src="../../../public/images/amras1.jpg"
+                src="/images/amras1.jpg"
                 alt="Image 1"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
               <img
-                src="../../../public/images/amras2.jpg"
+                src="/images/amras2.jpg"
                 alt="Image 2"
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="w-full max-w-[300px] h-auto rounded-xl overflow-hidden shadow-md hover:shadow-lg transition mx-auto">
               <img
-                src="../../../public/images/amras3.jpg"
+                src="/images/amras3.jpg"
                 alt="Image 3"
                 className="w-full h-full object-cover"
               />
