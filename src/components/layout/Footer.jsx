@@ -104,7 +104,7 @@ const Footer = () => {
             </h3>
             <div className="flex space-x-4 mb-4">
               <a
-                href="https://www.instagram.com/gramlok_fruits_and_exports/"
+                href="https://www.instagram.com/gramlok_naturals?igsh=MWU1MDV1c3VrNm9udA=="
                 className="hover:text-green-600 transition duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
