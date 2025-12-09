@@ -78,7 +78,7 @@ const Home = () => {
       {
         id: "ratnagiri-hapus",
         name: "Ratnagiri - Hapus",
-        image: "/images/ratnagirihapus.png",
+        image: "/images/ratnagiri_hapus_rb.png",
         description: "Sourced from Konkan, original and natural.",
       },
       {
@@ -94,39 +94,8 @@ const Home = () => {
         description: "Sourced from Konkan, original and natural.",
       },
     ],
-    "Guava -Chikoo Varieties": [
-      {
-        id: "pinktaiwanperu",
-        name: "Pink - taiwan - peru",
-        image: "/images/pinktaiwanperu.png",
-        description: "Large, sweet, and aromatic.",
-      },
-      {
-        id: "sardar-guava",
-        name: "Sardar Guava",
-        image: "/images/sardarperu.webp",
-        description: "Large, sweet, and aromatic.",
-      },
-      {
-        id: "chikoo",
-        name: "Chikoo",
-        image: "/images/chikoo.jpg",
-        description: "Large, sweet, and aromatic.",
-      },
-    ],
+
     "Other Products": [
-      {
-        id: "frozen strewbery",
-        name: "Frozen Strewbery",
-        image: "/images/frozenstrewbery.png",
-        description: "Soft, sweet, and nutrient-rich.",
-      },
-      {
-        id: "kaju",
-        name: "Kaju",
-        image: "/images/kaju.png",
-        description: "Soft, sweet, and nutrient-rich.",
-      },
       {
         id: "kanda",
         name: "Kanda",
@@ -134,9 +103,15 @@ const Home = () => {
         description: "Soft, nutrient-rich.",
       },
       {
+        id: "chikoo",
+        name: "Chikoo",
+        image: "/images/chikku_final.png",
+        description: "Large, sweet, and aromatic.",
+      },
+      {
         id: "Amras",
         name: "Amras",
-        image: "/images/amras3.jpg",
+        image: "/images/amrus_final_grid.png",
         description: "Pulp MRP 365/. 40% discount price : 220₹",
       },
     ],
